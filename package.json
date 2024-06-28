@@ -1,0 +1,32 @@
+{
+  "name": "proyecto_gonzalo",
+  "version": "1.0.0",
+  "description": "Aplicación Web de Gestión de Productos y Compras para un Vendedor Independiente",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gon011/Proyecto_Gonzalo.git"
+  },
+  "keywords": [
+    "TC2005B"
+  ],
+  "author": "Gonzalo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Gon011/Proyecto_Gonzalo/issues"
+  },
+  "homepage": "https://github.com/Gon011/Proyecto_Gonzalo#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "mysql2": "^3.10.1",
+    "nodemon": "^3.1.4"
+  }
+}

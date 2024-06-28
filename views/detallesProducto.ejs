@@ -1,0 +1,38 @@
+<%- include('includes/head.ejs') %>
+
+    <section class="detallesProducto">
+        <div class="columns">
+            <div class="card-image">
+                <figure>
+                    <img class="image-izquierda" src="<%= producto.imagen %>" alt="<%= producto.nombre %>">
+                </figure>
+            </div>
+            <div class="detallesProducto-texto">
+                <h1 class="title"><%= producto.nombre %></h1>
+                <br>
+                <p class="subtitle is-3">Descripcion:</p>
+                <p class="subtitle is-5"><%= producto.descripcion %></p>
+            </div>
+        </div>
+        <div class="detallesProducto preciocant">
+            <div class="texto-izquierda">
+                <p class="subtitle is-3">Cantidad disponible: <%= producto.cantidad %></p>
+            </div>
+            <div class="texto-derecha">
+                <p class="subtitle is-3">Categoria: <%= producto.tipo %></p>
+            </div>
+        </div>
+        <div class="detallesProducto botones">
+            <div class="boton-izquierda">
+                <i class="tam color-red fas fa-trash fa-lg"></i>
+            </div>
+            <div class="boton-izquierda">
+                <i class="tam color-purple fas fa-edit fa-lg"></i>
+            </div>
+            <div class="texto-derecha">
+                <p class="subtitle is-3">Precio: $<%= producto.precio.toFixed(2) %></p>
+            </div>
+        </div>
+    </section>
+
+<%- include('includes/foot.ejs') %>

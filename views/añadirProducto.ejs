@@ -1,0 +1,74 @@
+<%- include('includes/head.ejs') %>
+<main class="detallesProducto">
+    <div>
+        <div>
+            <h1 class="title is-2 titlePaguina">Añadir Producto</h1>
+        </div>
+        <br>
+
+        <form action="/productos/anadir-producto" method="post">
+            <div class="di">
+                <div class="derecha">
+                    <h1 class="title">Nombre del producto</h1>
+                    <input class="input is-primary" type="text" name="nombreProducto" id="nombreProducto" placeholder="Nombre del producto" required>
+                </div>
+                <div class="izquierda">
+                    <label class="title is-3" for="">Añadir imagen</label>
+                    <br>
+                    <input type="file" name="imagenProducto" id="imagenProducto">
+                </div>
+            </div>
+            <div>
+                <br>
+                <div class="di">
+                    <div class="izquierda">
+                        <h1 class="title">Descripción</h1>
+                        <textarea class="tamTextarea" name="descripcionProducto" id="descripcionProducto" placeholder="Descripción"></textarea>
+                    </div>
+                    <div class="derecha">
+                        <h1 class="title is-2">Cantidad disponible</h1>
+
+                        <input class="input is-primary" type="number" min="0" name="cantidadProducto" id="cantidadProducto" placeholder="Cantidad disponible" required>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <br>
+                <div class="di">
+                    <div class="izquierda">
+                        <h1 class="title is-2">Categoria</h1>
+                        <div class="select is-primary">
+                            <select name="categoriaProducto" id="categoriaProducto" required>
+                                <option value="1">Musica</option>
+                                <option value="2">Libros</option>
+                                <option value="3">Revistas</option>
+                                <option value="4">Películas</option>
+                                <option value="5">Ropa</option>
+                                <option value="6">Tecnología</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="derecha">
+                        <h1 class="title is-2">Precio</h1>
+                        <div class="di">
+                            <div class="derecha">
+                                <p class="title is-2">$</p>
+                            </div>
+                            <br>
+                            <div class="izquierda">
+                            <input class="input is-primary" type="number" step="0.01" min="0" name="precioProducto" id="precioProducto" placeholder="Precio" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Boton de registrar produto -->
+                <div class="centro">
+                    <button class="button is-medium is-primary" type="submit">Registrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</main>
+
+<%- include('includes/foot.ejs') %>

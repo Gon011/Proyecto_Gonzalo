@@ -1,0 +1,43 @@
+<%- include('includes/head.ejs') %>
+    <main class="detallesProducto">
+        <div class="columns">
+            <% for (i in productos) { %>
+                <% if (i % 3 == 0){ %>
+                        </div>
+                        <div class="columns">
+                <% } %>      
+            
+                    <div class="column is-one-third is-half-mobile">
+                        <div class="card has-background-info-light">
+                            <div class="card-image">
+                                <figure class="image is-1by1">
+                                    <img src="<%= productos[i].imagen %>">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-content">
+                                        <p class="title is-4" id="name_<%= i %>"><%= productos[i].nombre %></p>
+                                        <p class="subtitle is-4">$<span id="price_<%= i %>"><%= productos[i].precio.toFixed(2) %></span></p>
+                                    </div>
+                                   
+                                    <div class="buttons">
+                                        <div class="button-container">
+                                            <a href="/productos/<%= productos[i].IDproducto %>">
+                                                <button class="button is-primary">Ver detalles</button>
+                                            </a>
+                                        </div>
+                                        <div class="button-container">
+                                            <form action="/productos/<%= productos[i].IDproducto %>" method="post">
+                                                <button class="button is-primary" type="submit">Añadir al carrito</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <%  } %>
+    </main>
+
+<%- include('includes/foot.ejs') %>

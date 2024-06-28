@@ -1,0 +1,22 @@
+.titlePaguina {
+    text-align: center;
+}
+
+.tamTextarea {
+    width: 400%;
+    height: 100px;
+    margin: 0 auto;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.di {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.centro {
+    text-align: center;
+}

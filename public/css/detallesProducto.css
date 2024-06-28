@@ -1,0 +1,64 @@
+.detallesProducto {
+    padding: 70px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+}
+
+.detallesProducto-texto {
+    padding-left: 70px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.image-izquierda {
+    /*Ancho de la imagen*/
+    width: 400px;
+    /*Altura de la imagen*/
+    height: 400px;
+
+    margin-left: 100px;
+
+    margin-right: 100px;
+}
+
+.preciocant {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.texto-izquierda .texto-derecha {
+    flex: 1;
+    min-width: 150px; /* Ajusta este valor según tus necesidades */
+}
+
+.texto-derecha {
+    margin-right: 100px;
+}
+
+.botones {
+    display: flex;
+    padding: 10px;
+    flex-wrap: wrap;
+
+}
+
+.boton-izquierda, .boton-derecha {
+    min-width: 200px;
+    margin-left: 50px;
+}
+
+.tam {
+    /*Tamaño*/
+    font-size: 70px;
+}
+
+.color-red {
+    color: red;
+}
+
+.color-purple {
+    color: purple;
+}

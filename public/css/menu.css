@@ -1,0 +1,256 @@
+:root {
+    /* === COLORES === */
+    --primary-color: #00E1B0;
+    --secondary-color: #DC7F9B;
+    --terciary-color: #347fC4;
+    --hover-sidebar-color: #e65782;
+  
+    /* === TRANSICIONES === */
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column; /* Cambia la dirección a columna para alinear verticalmente */
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.button-container {
+    width: 100%; /* Asegúrate de que el contenedor ocupe el 100% del espacio disponible */
+    text-align: center; /* Centra el contenido del contenedor */
+    margin-bottom: 10px; /* Añade un margen inferior para separar los botones */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.navFijo {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar {
+    background-color: var(--primary-color);
+    color: #000000;
+    padding-right: 30px;
+    padding-left: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h2 {
+    color: #000000;
+    text-decoration: none;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
+.btn, .btn-logout, .btns {
+    margin-left: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn {
+    background-color: #DC7F9B;
+    color: white;
+}
+
+.btns {
+    background-color: #4A306D;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #cf7993;
+}
+
+.btn-logout {
+    background-color: #F2CC8F;
+    color: black;
+}
+
+.btn-logout:hover {
+    background-color: #e2bf87;
+}
+
+.content {
+    padding: 30px;
+    text-align: center;
+}
+
+
+/* Barra lateral */
+.sidebar {
+    position: fixed;
+    top: 74px;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background-color: var(--secondary-color);
+    transition: var(--tran-05);
+    z-index: 999;
+}
+  
+.sidebar.close {
+    width: 90px;
+}
+  
+.sidebar.close:hover {
+    width: 250px;
+}
+
+.sidebar .text {
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    transition: var(--tran-03);
+    white-space: nowrap;
+    opacity: 0;
+}
+
+.sidebar.close .text {
+    display: none;
+}
+
+.sidebar.close:hover .text {
+    display: block;
+    opacity: 1;
+}
+
+.sidebar li {
+    height: 50px;
+    margin-top: 5px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+  
+.sidebar li .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 50px;
+    font-size: 20px;
+    color: white;
+    transition: var(--tran-02);
+}
+  
+.sidebar li .icon,
+.sidebar li .text {
+    color: white;
+    transition: var(--tran-02);
+}
+  
+.sidebar .sidebar-header {
+    position: relative;
+}
+  
+.sidebar li a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    transition: var(--tran-04);
+}
+  
+.sidebar li a:hover {
+    background-color: var(--hover-sidebar-color);
+}
+  
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text {
+    color: white;
+}
+
+.sidebar .menu-bar {
+    height: calc(100% - 139.5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Barra desplegable */
+.dropdown {
+    display: none;
+    position: absolute;
+    left: 100px;
+    top: 0;
+    background-color: #4A306D;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-item {
+    position: relative;
+}
+
+.sub-dropdown {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: #4A306D;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sub-dropdown-inline {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: #4A306D;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+.nav-link:hover .dropdown,
+.dropdown-item:hover .sub-dropdown,
+.dropdown-item:hover .sub-dropdown-inline {
+    display: block;
+}
+
+.dropdown a, .sub-dropdown a, .sub-dropdown-inline a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: inline-block;
+}
+
+.dropdown a:hover, .sub-dropdown a:hover, .sub-dropdown-inline a:hover {
+    background-color: #4A306D;
+}
+
+.icon-bar {
+    display: flex;
+    text-align: center;
+}

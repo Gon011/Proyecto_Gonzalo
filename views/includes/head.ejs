@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda en Línea</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/detallesProducto.css">
+    <link rel="stylesheet" href="/css/anadir.css">
+</head>
+<body>
+    <header class="">
+        <div class="navbar navFijo">
+            <h2 class="subtitle is-4">VentaMini</h2>
+            <div class="men">
+                <button class="btn" onclick="location.href='/productos'">Productos</button>
+                <button class="btn" onclick="location.href='/compras'">Compras</button>
+            </div>
+            <div class="menu">
+                <div class="user">
+                    <p><%= nombre %></p>
+                </div>
+                <button class="btn-logout" onclick="location.href='/cierra'">Cerrar Sesión</button>
+            </div>
+        </div>
+    </header>
+    <section>
+        <aside class="sidebar close">
+            <br><br><br>
+            <div class="menu-bar mt-4">
+                <div class="menu">
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a href="#">
+                                <div class="icon-bar">                                
+                                    <div class="icon-derecha">
+                                        <i class="fa fa-filter fa-lg icon"></i>
+                                    </div>
+                                    <div class="texto-izquierda">
+                                        <span class="text nav-text">Filtros</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <ul class="dropdown">
+                                <li class="dropdown-item">
+                                    <a href="#">Categoria</a>
+                                    <ul class="sub-dropdown">
+                                        <li><a href="#">Musica</a></li>
+                                        <li><a href="#">Peliculas</a></li>
+                                        <li><a href="#">Libros</a></li>
+                                        <li><a href="#">Revistas</a></li>
+                                        <li><a href="#">Ropa</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item">
+                                    <a href="#">Precio</a>
+                                    <ul class="sub-dropdown">
+                                        <li><a href="#">$0 - $25</a></li>
+                                        <li><a href="#">$25 - $50</a></li>
+                                        <li><a href="#">$50 - $75</a></li>
+                                        <li><a href="#">$75 - $100</a></li>
+                                        <li><a href="#">$100 - $100+</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+    
+                        <li class="nav-link">
+                            <a href="/graficos">
+                                <div class="icon-bar">
+                                    <div class="icon-derecha">
+                                        <i class="fa fa-chart-bar fa-lg icon"></i>
+                                    </div>
+                                    <div class="texto-izquierda">
+                                        <span class="text nav-text">Gráficos</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="/productos/anadir-producto">
+                                <div class="icon-bar">
+                                    <div class="icon-derecha">
+                                        <i class="fa fa-plus fa-lg icon"></i>
+                                    </div>
+                                    <div class="texto-izquierda">
+                                        <span class="text nav-text">Añadir producto</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="/compras/carrito">
+                                <div class="icon-bar">
+                                    <div class="icon-derecha">
+                                        <i class="fas fa-shopping-cart icono-carrito icon"></i>
+                                    </div>
+                                    <div class="texto-izquierda">
+                                        <span class="text nav-text">Carrito</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div> 
+            </div>
+        </aside>
+    </section>
+        
