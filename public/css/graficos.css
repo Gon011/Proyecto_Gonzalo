@@ -1,0 +1,110 @@
+:root {
+    --primary-color: #00E1B0;
+    --secondary-color: #DC7F9B;
+    --tertiary-color: #347fC4;
+    --hover-color: #e65782;
+    --background-color: #f8f9fa;
+    --text-color: #333;
+    --container-bg: #fff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 20px;
+    margin-top: 100px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--tertiary-color);
+    font-size: 2em;
+}
+
+.selector {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.chart-button {
+    margin: 10px;
+    padding: 12px 18px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: var(--transition);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.chart-button:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px var(--shadow-color);
+}
+
+.chart-container {
+    display: none;
+    margin: 0 auto 40px auto;
+    padding: 20px;
+    background-color: var(--container-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    width: 80%;
+}
+
+.chart-container.active {
+    display: block;
+}
+
+.chart-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-size: 1.5em;
+}
+
+canvas {
+    width: 100% !important;
+    height: 400px !important;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: var(--transition);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.back-button:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px var(--shadow-color);
+}

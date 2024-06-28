@@ -1,0 +1,50 @@
+<%- include('includes/head') %>
+
+<div class="container">
+    <h1 class="title">Gráficos de Ventas</h1>
+
+    <div class="selector">
+        <button class="chart-button" data-chart="ingresosPorDia">Ingresos Totales por Día</button>
+        <button class="chart-button" data-chart="ventasPorProducto">Ventas por Producto</button>
+        <button class="chart-button" data-chart="ventasPorCategoria">Distribución de Ventas por Categoría</button>
+        <button class="chart-button" data-chart="tendenciaVentas">Tendencia de Ventas</button>
+        <button class="chart-button" data-chart="ventasPorDia">Ventas por Día</button>
+        <button class="chart-button" data-chart="ventasPorEstado">Ventas por Estado</button>
+    </div>
+
+    <div class="chart-container" id="ingresosPorDia">
+        <h2>Ingresos Totales por Día</h2>
+        <canvas></canvas>
+    </div>
+
+    <div class="chart-container" id="ventasPorProducto">
+        <h2>Ventas por Producto</h2>
+        <canvas></canvas>
+    </div>
+
+    <div class="chart-container" id="ventasPorCategoria">
+        <h2>Distribución de Ventas por Categoría</h2>
+        <canvas></canvas>
+    </div>
+
+    <div class="chart-container" id="tendenciaVentas">
+        <h2>Tendencia de Ventas</h2>
+        <canvas></canvas>
+    </div>
+
+    <div class="chart-container" id="ventasPorDia">
+        <h2>Ventas por Día</h2>
+        <canvas></canvas>
+    </div>
+
+    <div class="chart-container" id="ventasPorEstado">
+        <h2>Ventas por Estado</h2>
+        <canvas></canvas>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/js/graficos.js"></script>
+
+<%- include('includes/foot') %>

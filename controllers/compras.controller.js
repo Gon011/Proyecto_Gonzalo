@@ -16,5 +16,7 @@ exports.get_carrito = (request, response, next) => {
 }
 
 exports.get_graficos = (request, response, next) => {
-    response.render("graficos")
+    response.render("graficos", {
+        nombre: request.session.username
+    })
 }
