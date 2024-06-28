@@ -14,3 +14,7 @@ exports.get_carrito = (request, response, next) => {
         productos: request.session.carrito
     });    
 }
+
+exports.get_graficos = (request, response, next) => {
+    response.render("graficos")
+}

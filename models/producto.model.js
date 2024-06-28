@@ -20,7 +20,8 @@ module.exports = class Producto {
 
 
     static fetchAll() {
-        return db.execute(`SELECT * FROM productos`)
+        return db.execute(
+            `SELECT * FROM productos`)
     }
 
     static fetchOne(id) {
@@ -30,6 +31,10 @@ module.exports = class Producto {
             ON p.IDcategoria = c.IDcategoria
             WHERE IDproducto = ?;`,
             [id])
+    }
+
+    static fetchCategorias() {
+        return db.execute(`SELECT * FROM categoria`)
     }
 
 }
