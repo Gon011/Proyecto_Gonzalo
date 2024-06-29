@@ -14,37 +14,39 @@
 
     <div class="chart-container" id="ingresosPorDia">
         <h2>Ingresos Totales por Día</h2>
-        <canvas></canvas>
+        <canvas id="ingresosPorDiaChart"></canvas>
     </div>
 
     <div class="chart-container" id="ventasPorProducto">
         <h2>Ventas por Producto</h2>
-        <canvas></canvas>
+        <canvas id="ventasPorProductoChart"></canvas>
     </div>
 
     <div class="chart-container" id="ventasPorCategoria">
         <h2>Distribución de Ventas por Categoría</h2>
-        <canvas></canvas>
+        <canvas id="ventasPorCategoriaChart"></canvas>
     </div>
 
     <div class="chart-container" id="tendenciaVentas">
         <h2>Tendencia de Ventas</h2>
-        <canvas></canvas>
+        <canvas id="tendenciaVentasChart"></canvas>
     </div>
 
     <div class="chart-container" id="ventasPorDia">
         <h2>Ventas por Día</h2>
-        <canvas></canvas>
+        <canvas id="ventasPorDiaChart"></canvas>
     </div>
 
     <div class="chart-container" id="ventasPorEstado">
         <h2>Ventas por Estado</h2>
-        <canvas></canvas>
+        <canvas id="ventasPorEstadoChart"></canvas>
     </div>
 
+    <button class="back-button" onclick="location.href='/productos'">Volver a Productos</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/js/graficos.js"></script>
 
 <%- include('includes/foot') %>
+

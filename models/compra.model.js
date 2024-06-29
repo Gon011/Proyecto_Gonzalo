@@ -74,7 +74,7 @@ module.exports = class Compra {
     });
     }
 
-    static getIngresosPorDia() {
+    static fetchIngresosPorDia() {
         return db.execute(
           `SELECT fecha, SUM(cp.cantidad * cp.precio) as ingresos_totales 
            FROM compra c
@@ -85,7 +85,7 @@ module.exports = class Compra {
       }
     
       // Método para obtener ventas por día
-      static getVentasPorDia() {
+      static fetchVentasPorDia() {
         return db.execute(
           `SELECT fecha, COUNT(*) as cantidad_ventas 
            FROM compra 
@@ -95,19 +95,19 @@ module.exports = class Compra {
       }
     
       // Método para obtener distribución de ventas por categoría de producto
-      static getVentasPorCategoria() {
+      static fetchVentasPorCategoria() {
         return db.execute(
           `SELECT p.IDcategoria, COUNT(*) as cantidad_ventas 
            FROM compra c
            JOIN comproducto cp ON c.IDcompra = cp.IDcompra
-           JOIN producto p ON cp.IDproducto = p.IDproducto
+           JOIN productos p ON cp.IDproducto = p.IDproducto
            WHERE c.estado = 'terminada'
            GROUP BY p.IDcategoria`
         );
       }
     
       // Método para obtener tendencia de ventas en el tiempo
-      static getTendenciaVentas() {
+      static fetchTendenciaVentas() {
         return db.execute(
           `SELECT fecha, SUM(cp.cantidad) as total_vendido 
            FROM compra c
@@ -118,11 +118,22 @@ module.exports = class Compra {
       }
     
       // Método para obtener ventas por estado (pendiente vs. terminada)
-      static getVentasPorEstado() {
+      static fetchVentasPorEstado() {
         return db.execute(
           `SELECT fecha, estado, COUNT(*) as cantidad_ventas 
            FROM compra 
            GROUP BY fecha, estado`
+        );
+      }
+
+      static fetchVentasPorProducto() {
+        return db.execute(
+          `SELECT p.nombre, SUM(cp.cantidad) as cantidad_vendida 
+           FROM compra c
+           JOIN comproducto cp ON c.IDcompra = cp.IDcompra
+           JOIN productos p ON cp.IDproducto = p.IDproducto
+           WHERE c.estado = 'terminada'
+           GROUP BY p.nombre`
         );
       }
     
