@@ -84,30 +84,22 @@ module.exports = class Compra {
         );
       }
     
-      // Método para obtener ventas por día
-      static fetchVentasPorDia() {
-        return db.execute(
-          `SELECT fecha, COUNT(*) as cantidad_ventas 
-           FROM compra 
-           WHERE estado = 'terminada' 
-           GROUP BY fecha`
-        );
-      }
-    
-      // Método para obtener distribución de ventas por categoría de producto
+      
+      // Método para obtener ventas por categoría de producto
       static fetchVentasPorCategoria() {
         return db.execute(
-          `SELECT p.IDcategoria, COUNT(*) as cantidad_ventas 
+          `SELECT ca.tipo, SUM(cp.cantidad) as cantidad_ventas 
            FROM compra c
            JOIN comproducto cp ON c.IDcompra = cp.IDcompra
            JOIN productos p ON cp.IDproducto = p.IDproducto
+           JOIN categoria ca ON p.IDcategoria = ca.IDcategoria
            WHERE c.estado = 'terminada'
            GROUP BY p.IDcategoria`
         );
       }
     
       // Método para obtener tendencia de ventas en el tiempo
-      static fetchTendenciaVentas() {
+      static fetchVentasPorDia() {
         return db.execute(
           `SELECT fecha, SUM(cp.cantidad) as total_vendido 
            FROM compra c
@@ -118,11 +110,11 @@ module.exports = class Compra {
       }
     
       // Método para obtener ventas por estado (pendiente vs. terminada)
-      static fetchVentasPorEstado() {
+      static fetchComprasPorEstado() {
         return db.execute(
-          `SELECT fecha, estado, COUNT(*) as cantidad_ventas 
+          `SELECT estado, COUNT(*) as cantidad_ventas 
            FROM compra 
-           GROUP BY fecha, estado`
+           GROUP BY estado`
         );
       }
 
@@ -133,7 +125,7 @@ module.exports = class Compra {
            JOIN comproducto cp ON c.IDcompra = cp.IDcompra
            JOIN productos p ON cp.IDproducto = p.IDproducto
            WHERE c.estado = 'terminada'
-           GROUP BY p.nombre`
+           GROUP BY p.IDproducto`
         );
       }
     

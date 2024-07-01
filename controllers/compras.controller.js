@@ -14,31 +14,30 @@ exports.get_carrito = (request, response, next) => {
 }
 
 exports.get_graficos = (request, response, next) => {
-    Compra.fetchIngresosPorDia()
-        .then(([ingresosPorDia, fieldData]) => {
-            Compra.fetchVentasPorDia()
-                .then(([ventasPorDia, fieldData]) => {
-                    Compra.fetchVentasPorCategoria()
-                        .then(([ventasPorCategoria, fieldData]) => {
-                            Compra.fetchTendenciaVentas()
-                                .then(([tendenciaVentas, fieldData]) => {
-                                    Compra.fetchVentasPorEstado()
-                                        .then(([ventasPorEstado, fieldData]) => {
-                                            Compra.fetchVentasPorProducto()
-                                                .then(([ventasPorProducto, fieldData]) => {
-                                                    response.render("graficos", {
-                                                        nombre: request.session.username,
-                                                        ingresosPorDia: ingresosPorDia,
-                                                        ventasPorDia: ventasPorDia,
-                                                        ventasPorCategoria: ventasPorCategoria,
-                                                        tendenciaVentas: tendenciaVentas,
-                                                        ventasPorEstado: ventasPorEstado,
-                                                        ventasPorProducto: ventasPorProducto
-                                                    });
-                                                }).catch((error) => {console.log(error)});
-                                        }).catch((error) => {console.log(error)})
-                                }).catch((error) => {console.log(error)})
-                        }).catch((error) => {console.log(error)})
-                }).catch((error) => {console.log(error)})
-        }).catch((error) => {console.log(error)})
+    Promise.all([
+        Compra.fetchIngresosPorDia(),
+        Compra.fetchVentasPorCategoria(),
+        Compra.fetchVentasPorDia(),
+        Compra.fetchComprasPorEstado(),
+        Compra.fetchVentasPorProducto()
+    ])
+    .then(([
+        [ingresosPorDia, ingresosPorDiaFieldData],
+        [ventasPorCategoria, ventasPorCategoriaFieldData],
+        [ventasPorDia, tendenciaVentasFieldData],
+        [comprasPorEstado, ventasPorEstadoFieldData],
+        [ventasPorProducto, ventasPorProductoFieldData]
+    ]) => {
+        response.render("graficos", {
+            nombre: request.session.username,
+            ingresosPorDia: ingresosPorDia,
+            ventasPorCategoria: ventasPorCategoria,
+            ventasPorDia: ventasPorDia,
+            comprasPorEstado: comprasPorEstado,
+            ventasPorProducto: ventasPorProducto
+        });
+    })
+    .catch((error) => {
+        console.log(error);
+    });
 }
