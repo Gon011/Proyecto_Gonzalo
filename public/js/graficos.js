@@ -53,6 +53,11 @@ new Chart(document.getElementById('ventasPorCategoriaChart'), {
             borderColor: 'rgba(52, 127, 196, 1)',
             borderWidth: 1
         }]
+    },
+    options: {
+        scales: {
+            y: { beginAtZero: true }
+        }
     }
 });
 
@@ -86,6 +91,11 @@ new Chart(document.getElementById('comprasPorEstadoChart'), {
                 'rgba(220, 127, 155, 1)',
             borderWidth: 1
         }]
+    },
+    options: {
+        scales: {
+            y: { beginAtZero: true }
+        }
     }
 });
 
