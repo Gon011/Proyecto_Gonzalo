@@ -3,13 +3,15 @@ const Compra = require("../models/compra.model");
 exports.get_compras = (request, response, next) => {
     response.render('compras', {
         nombre: request.session.username,
+        permisos: request.session.permisos || []
     });   
 }
 
 exports.get_carrito = (request, response, next) => {
     response.render("carrito", {
         nombre: request.session.username,
-        productos: request.session.carrito
+        productos: request.session.carrito,
+        permisos: request.session.permisos || []
     });    
 }
 
@@ -34,7 +36,8 @@ exports.get_graficos = (request, response, next) => {
             ventasPorCategoria: ventasPorCategoria,
             ventasPorDia: ventasPorDia,
             comprasPorEstado: comprasPorEstado,
-            ventasPorProducto: ventasPorProducto
+            ventasPorProducto: ventasPorProducto,
+            permisos: request.session.permisos || []
         });
     })
     .catch((error) => {

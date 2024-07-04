@@ -6,7 +6,8 @@ exports.get_productos = (request, response, next) => {
         .then(([rows, fieldData]) => {
             response.render('productos', {
                 nombre: request.session.username,
-                productos: rows
+                productos: rows,
+                permisos: request.session.permisos || []
             });
         }).catch((error) => {console.log(error);})
 };
@@ -17,14 +18,16 @@ exports.get_producto = (request, response, next) => {
         .then(([rows, fieldData]) => {
             response.render('detallesProducto', {
                 nombre: request.session.username,
-                producto: rows[0]
+                producto: rows[0],
+                permisos: request.session.permisos || []
             }); 
         }).catch((error) => {console.log(error);})
 }
 
 exports.get_anadir_producto = (request, response, next) => {
     response.render('añadirProducto', {
-        nombre: request.session.username
+        nombre: request.session.username,
+        permisos: request.session.permisos || []
     })
 }
 
