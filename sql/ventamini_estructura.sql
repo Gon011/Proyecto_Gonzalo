@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql-criticraft.alwaysdata.net
--- Generation Time: Jun 28, 2024 at 03:50 AM
+-- Generation Time: Jul 04, 2024 at 04:34 PM
 -- Server version: 10.6.16-MariaDB
 -- PHP Version: 7.4.33
 
@@ -51,7 +51,7 @@ CREATE TABLE `categoria` (
 --
 
 CREATE TABLE `compra` (
-  `IDticket` int(11) NOT NULL,
+  `IDcompra` int(11) NOT NULL,
   `usuario` varchar(64) NOT NULL,
   `estado` varchar(32) NOT NULL,
   `fecha` date NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE `compra` (
 --
 
 CREATE TABLE `comproducto` (
-  `IDticket` int(11) NOT NULL,
+  `IDcompra` int(11) NOT NULL,
   `IDproducto` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `precio` float NOT NULL
@@ -144,6 +144,7 @@ CREATE TABLE `usuario` (
 -- Indexes for table `asigna`
 --
 ALTER TABLE `asigna`
+  ADD PRIMARY KEY (`usuario`,`IDrol`),
   ADD KEY `usuario` (`usuario`),
   ADD KEY `IDrol` (`IDrol`);
 
@@ -157,20 +158,22 @@ ALTER TABLE `categoria`
 -- Indexes for table `compra`
 --
 ALTER TABLE `compra`
-  ADD PRIMARY KEY (`IDticket`),
+  ADD PRIMARY KEY (`IDcompra`),
   ADD KEY `usuario` (`usuario`);
 
 --
 -- Indexes for table `comproducto`
 --
 ALTER TABLE `comproducto`
-  ADD KEY `IDticket` (`IDticket`),
-  ADD KEY `IDproducto` (`IDproducto`);
+  ADD PRIMARY KEY (`IDcompra`,`IDproducto`),
+  ADD KEY `IDproducto` (`IDproducto`),
+  ADD KEY `IDcompra` (`IDcompra`) USING BTREE;
 
 --
 -- Indexes for table `posee`
 --
 ALTER TABLE `posee`
+  ADD PRIMARY KEY (`IDrol`,`IDprivilegio`),
   ADD KEY `IDrol` (`IDrol`),
   ADD KEY `IDprivilegio` (`IDprivilegio`);
 
@@ -208,6 +211,12 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `categoria`
   MODIFY `IDcategoria` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `compra`
+--
+ALTER TABLE `compra`
+  MODIFY `IDcompra` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `privilegio`
@@ -248,7 +257,7 @@ ALTER TABLE `compra`
 -- Constraints for table `comproducto`
 --
 ALTER TABLE `comproducto`
-  ADD CONSTRAINT `comproducto_ibfk_1` FOREIGN KEY (`IDticket`) REFERENCES `compra` (`IDticket`),
+  ADD CONSTRAINT `comproducto_ibfk_1` FOREIGN KEY (`IDcompra`) REFERENCES `compra` (`IDcompra`),
   ADD CONSTRAINT `comproducto_ibfk_2` FOREIGN KEY (`IDproducto`) REFERENCES `productos` (`IDproducto`);
 
 --
