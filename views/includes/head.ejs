@@ -69,6 +69,7 @@
                             </ul>
                         </li>
     
+                        <% if (permisos.some(p => p.funcionalidad === 'consulta gráficos')) { %>
                         <li class="nav-link">
                             <a href="/compras/graficos">
                                 <div class="icon-bar">
@@ -81,6 +82,9 @@
                                 </div>
                             </a>
                         </li>
+                        <% } %>
+
+                        <% if (permisos.some(p => p.funcionalidad === 'registra productos')) { %>
                         <li class="nav-link">
                             <a href="/productos/anadir-producto">
                                 <div class="icon-bar">
@@ -93,6 +97,9 @@
                                 </div>
                             </a>
                         </li>
+                        <% } %>
+
+                        <% if (permisos.some(p => p.funcionalidad === 'realiza compras')) { %>
                         <li class="nav-link">
                             <a href="/compras/carrito">
                                 <div class="icon-bar">
@@ -105,9 +112,11 @@
                                 </div>
                             </a>
                         </li>
+                        <% } %>
                     </ul>
                 </div> 
             </div>
         </aside>
     </section>
-        
+</body>
+</html>
