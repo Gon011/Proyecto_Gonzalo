@@ -5,8 +5,8 @@ const permisos = require('../util/permisos');
 
 const controladores = require('../controllers/productos.controller');
 
-router.post("/anadir-producto", isAuth, permisos.anadir_producto, controladores.post_anadir_producto);
-router.get("/anadir-producto", isAuth, permisos.anadir_producto, controladores.get_anadir_producto);
+router.post("/anadir", isAuth, permisos.anadir_producto, controladores.post_anadir_producto);
+router.get("/anadir", isAuth, permisos.anadir_producto, controladores.get_anadir_producto);
 
 router.get("/:id", isAuth, controladores.get_producto);
 router.get("/", isAuth, controladores.get_productos);

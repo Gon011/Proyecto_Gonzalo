@@ -6,7 +6,7 @@
         </div>
         <br>
 
-        <form action="/productos/anadir-producto" method="post">
+        <form action="/productos/anadir" method="post" enctype="multipart/form-data">
             <div class="di">
                 <div class="derecha">
                     <h1 class="title">Nombre del producto</h1>
@@ -15,7 +15,7 @@
                 <div class="izquierda">
                     <label class="title is-3" for="">Añadir imagen</label>
                     <br>
-                    <input type="file" name="imagenProducto" id="imagenProducto">
+                    <input type="file" name="imagen" id="imagen" accept="image/*">
                 </div>
             </div>
             <div>
@@ -63,7 +63,7 @@
                 </div>
                 <!-- Boton de registrar produto -->
                 <div class="centro">
-                    <button class="button is-medium is-primary" type="submit">Registrar</button>
+                    <button class="button is-medium is-primary" type="submit">Guardar</button>
                 </div>
             </div>
         </form>

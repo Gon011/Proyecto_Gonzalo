@@ -46,8 +46,6 @@ function validar(event) {
         alert("la contraseña debe ser más larga");
     } else if (seguridad() < 6) {
         alert("la contraseña debe contener mayúsculas, minúsculas, números y caracteres especiales");
-    } else {
-        alert("usuario creado")
     }
 }
 

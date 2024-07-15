@@ -4,9 +4,17 @@ exports.get_productos = (request, response, next) => {
 
     Producto.fetchAll()
         .then(([rows, fieldData]) => {
+            const productos = rows.map(producto => {
+                if (producto.imagen.startsWith('https')) {
+                    producto.imagen = producto.imagen;
+                } else {
+                    producto.imagen = '/uploads/' + producto.imagen;
+                }
+                return producto;
+            });
             response.render('productos', {
                 nombre: request.session.username,
-                productos: rows,
+                productos: productos,
                 permisos: request.session.permisos || []
             });
         }).catch((error) => {console.log(error);})
@@ -16,6 +24,11 @@ exports.get_producto = (request, response, next) => {
     const id = request.params.id;
     Producto.fetchOne(id)
         .then(([rows, fieldData]) => {
+
+            if (!(rows[0].imagen.startsWith('https'))) {
+                rows[0].imagen = '/uploads/' + rows[0].imagen;
+            }
+
             response.render('detallesProducto', {
                 nombre: request.session.username,
                 producto: rows[0],
@@ -37,7 +50,7 @@ exports.post_anadir_producto = (request, response, next) => {
     const cantidad = request.body.cantidadProducto;
     const categoria = request.body.categoriaProducto;
     const precio = request.body.precioProducto;
-    const imagen = request.body.imagenProducto;
+    const imagen = request.file.filename
 
     const producto = new Producto(categoria, nombre, precio, descripcion, imagen, cantidad);
     producto.save()
