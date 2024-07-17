@@ -8,7 +8,7 @@ exports.anadir_producto = (request, response, next) => {
     if (addProduct) {
         next();
     } else {
-        return response.redirect("/cierra");
+        return response.redirect("/productos");
     }
 }
 
@@ -22,7 +22,7 @@ exports.editar_producto = (request, response, next) => {
     if (editProduct) {
         next();
     } else {
-        return response.redirect("/cierra");
+        return response.redirect("/productos");
     }
 }
 
@@ -36,7 +36,7 @@ exports.eliminar_producto = (request, response, next) => {
     if (deleteProduct) {
         next();
     } else {
-        return response.redirect("/cierra");
+        return response.redirect("/productos");
     }
 }
 
@@ -50,21 +50,7 @@ exports.realizar_compra = (request, response, next) => {
     if (makePurchase) {
         next();
     } else {
-        return response.redirect("/cierra");
-    }
-}
-
-exports.consultar_compras = (request, response, next) => {
-    let viewAllPurchases = false;
-    for (let permiso of request.session.permisos) {
-        if (permiso.funcionalidad == "consulta todas las compras") {
-            viewAllPurchases = true;
-        }
-    }
-    if (viewAllPurchases) {
-        next();
-    } else {
-        return response.redirect("/cierra");
+        return response.redirect("/compras");
     }
 }
 
@@ -78,21 +64,8 @@ exports.consultar_graficos = (request, response, next) => {
     if (viewCharts) {
         next();
     } else {
-        return response.redirect("/cierra");
+        return response.redirect("/compras");
     }
 }
 
-exports.modificar_estado_compra = (request, response, next) => {
-    let modifyPurchaseStatus = false;
-    for (let permiso of request.session.permisos) {
-        if (permiso.funcionalidad == "modifica estado de compra") {
-            modifyPurchaseStatus = true;
-        }
-    }
-    if (modifyPurchaseStatus) {
-        next();
-    } else {
-        return response.redirect("/cierra");
-    }
-}
 

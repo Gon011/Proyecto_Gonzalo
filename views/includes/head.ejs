@@ -34,42 +34,8 @@
             <div class="menu-bar mt-4">
                 <div class="menu">
                     <ul class="menu-links">
-                        <li class="nav-link">
-                            <a href="#">
-                                <div class="icon-bar">                                
-                                    <div class="icon-derecha">
-                                        <i class="fa fa-filter fa-lg icon"></i>
-                                    </div>
-                                    <div class="texto-izquierda">
-                                        <span class="text nav-text">Filtros</span>
-                                    </div>
-                                </div>
-                            </a>
-                            <ul class="dropdown">
-                                <li class="dropdown-item">
-                                    <a href="#">Categoria</a>
-                                    <ul class="sub-dropdown">
-                                        <li><a href="#">Musica</a></li>
-                                        <li><a href="#">Peliculas</a></li>
-                                        <li><a href="#">Libros</a></li>
-                                        <li><a href="#">Revistas</a></li>
-                                        <li><a href="#">Ropa</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown-item">
-                                    <a href="#">Precio</a>
-                                    <ul class="sub-dropdown">
-                                        <li><a href="#">$0 - $25</a></li>
-                                        <li><a href="#">$25 - $50</a></li>
-                                        <li><a href="#">$50 - $75</a></li>
-                                        <li><a href="#">$75 - $100</a></li>
-                                        <li><a href="#">$100 - $100+</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
     
-                        <% if (permisos.some(p => p.funcionalidad === 'consulta gráficos')) { %>
+                        <% if (permisos.some(p => p.funcionalidad === 'consulta gráficos') && compraducto) { %>
                         <li class="nav-link">
                             <a href="/compras/graficos">
                                 <div class="icon-bar">
@@ -84,7 +50,7 @@
                         </li>
                         <% } %>
 
-                        <% if (permisos.some(p => p.funcionalidad === 'registra productos')) { %>
+                        <% if (permisos.some(p => p.funcionalidad === 'registra productos') && !compraducto) { %>
                         <li class="nav-link">
                             <a href="/productos/anadir">
                                 <div class="icon-bar">

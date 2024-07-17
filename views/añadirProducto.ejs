@@ -10,7 +10,8 @@
             <div class="di">
                 <div class="derecha">
                     <h1 class="title">Nombre del producto</h1>
-                    <input class="input is-primary" type="text" name="nombreProducto" id="nombreProducto" placeholder="Nombre del producto" required>
+                    <input class="input is-primary" type="text" name="nombreProducto" id="nombreProducto" 
+                    placeholder="Nombre del producto" pattern="(?=.*[a-zA-Z]).+" required>
                 </div>
                 <div class="izquierda">
                     <label class="title is-3" for="">Añadir imagen</label>
@@ -23,7 +24,7 @@
                 <div class="di">
                     <div class="izquierda">
                         <h1 class="title">Descripción</h1>
-                        <textarea class="tamTextarea" name="descripcionProducto" id="descripcionProducto" placeholder="Descripción"></textarea>
+                        <textarea class="tamTextarea" name="descripcionProducto" id="descripcionProducto" placeholder="Descripción"> </textarea>
                     </div>
                     <div class="derecha">
                         <h1 class="title is-2">Cantidad disponible</h1>

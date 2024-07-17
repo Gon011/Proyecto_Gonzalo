@@ -1,17 +1,35 @@
 const Compra = require("../models/compra.model");
 
 exports.get_compras = (request, response, next) => {
+    let compraducto;
+
+    if (request._parsedOriginalUrl.path.startsWith("/productos")) {
+        compraducto = false;
+    }
+    if (request._parsedOriginalUrl.path.startsWith("/compras")) {
+        compraducto = true;
+    }
     response.render('compras', {
         nombre: request.session.username,
-        permisos: request.session.permisos || []
+        permisos: request.session.permisos || [],
+        compraducto: compraducto
     });   
 }
 
 exports.get_carrito = (request, response, next) => {
+    let compraducto;
+
+    if (request._parsedOriginalUrl.path.startsWith("/productos")) {
+        compraducto = false;
+    }
+    if (request._parsedOriginalUrl.path.startsWith("/compras")) {
+        compraducto = true;
+    }
     response.render("carrito", {
         nombre: request.session.username,
         productos: request.session.carrito,
-        permisos: request.session.permisos || []
+        permisos: request.session.permisos || [],
+        compraducto: compraducto
     });    
 }
 
