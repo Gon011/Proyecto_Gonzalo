@@ -100,3 +100,46 @@ exports.post_carrito = (request, response, next) => {
             response.redirect("/compras/carrito")
         }).catch((error) => {console.log(error);})
 }
+
+exports.get_editar_producto = (request, response, next) => {
+    let compraducto;
+
+    if (request._parsedOriginalUrl.path.startsWith("/productos")) {
+        compraducto = false;
+    }
+    if (request._parsedOriginalUrl.path.startsWith("/compras")) {
+        compraducto = true;
+    }
+    const id = request.params.id;
+    Producto.fetchOne(id)
+        .then(([rows, fieldData]) => {
+            if (rows.length == 0) {
+                response.status(404);
+                response.render('404');
+            }
+            else {
+                response.render('editarProducto', {
+                    nombre: request.session.username,
+                    producto: rows[0],
+                    permisos: request.session.permisos || [],
+                    compraducto: compraducto
+                }); 
+            }
+        }).catch((error) => {console.log(error);})
+}
+
+exports.post_editar_producto = (request, response, next) => {
+    const id = request.params.id;
+    const nombre = request.body.nombreProducto;
+    const descripcion = request.body.descripcionProducto;
+    const cantidad = request.body.cantidadProducto;
+    const categoria = request.body.categoriaProducto;
+    const precio = request.body.precioProducto;
+    const imagen = request.file ? '/uploads/' + request.file.filename : request.body.imagenActual;
+
+    Producto.update(id, categoria, nombre, precio, descripcion, imagen, cantidad)
+        .then(() => {
+            response.redirect(`/productos/${id}`);
+        })
+        .catch((error) => { console.log(error); });
+};

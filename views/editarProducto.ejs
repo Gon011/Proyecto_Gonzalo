@@ -2,19 +2,20 @@
 <main class="detallesProducto">
     <div>
         <div>
-            <h1 class="title is-2 titlePaguina">Añadir Producto</h1>
+            <h1 class="title is-2 titlePaguina">Editar Producto</h1>
         </div>
         <br>
 
-        <form action="/productos/anadir" method="post" enctype="multipart/form-data">
+        <form action="/productos/editar/<%= producto.IDproducto %>" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="imagenActual" value="<%= producto.imagen %>">
             <div class="di">
                 <div class="derecha">
                     <h1 class="title">Nombre del producto</h1>
                     <input class="input is-primary" type="text" name="nombreProducto" id="nombreProducto" 
-                    placeholder="Nombre del producto" pattern="(?=.*[a-zA-Z]).+" required>
+                    placeholder="Nombre del producto" pattern="(?=.*[a-zA-Z]).+" required value="<%= producto.nombre %>">
                 </div>
                 <div class="izquierda">
-                    <label class="title is-3" for="">Añadir imagen</label>
+                    <label class="title is-3" for="">Cambiar imagen</label>
                     <br>
                     <input type="file" name="imagen" id="imagen" accept="image/*">
                 </div>
@@ -24,12 +25,13 @@
                 <div class="di">
                     <div class="izquierda">
                         <h1 class="title">Descripción</h1>
-                        <textarea class="tamTextarea" name="descripcionProducto" id="descripcionProducto" placeholder="Descripción"></textarea>
+                        <textarea class="tamTextarea" name="descripcionProducto" id="descripcionProducto" placeholder="Descripción"><%= producto.descripcion %></textarea>
                     </div>
                     <div class="derecha">
                         <h1 class="title is-2">Cantidad disponible</h1>
 
-                        <input class="input is-primary" type="number" min="0" name="cantidadProducto" id="cantidadProducto" placeholder="Cantidad disponible" required>
+                        <input class="input is-primary" type="number" min="0" name="cantidadProducto" id="cantidadProducto" 
+                        placeholder="Cantidad disponible" required value="<%= producto.cantidad %>">
                     </div>
                 </div>
             </div>
@@ -40,12 +42,13 @@
                         <h1 class="title is-2">Categoria</h1>
                         <div class="select is-primary">
                             <select name="categoriaProducto" id="categoriaProducto" required>
-                                <option value="1">Musica</option>
-                                <option value="2">Libros</option>
-                                <option value="3">Revistas</option>
-                                <option value="4">Películas</option>
-                                <option value="5">Ropa</option>
-                                <option value="6">Tecnología</option>
+                                <option value="1" <%= producto.IDcategoria == 1 ? 'selected' : '' %>>Música</option>
+                                <option value="2" <%= producto.IDcategoria == 2 ? 'selected' : '' %>>Libros</option>
+                                <option value="3" <%= producto.IDcategoria == 3 ? 'selected' : '' %>>Revistas</option>
+                                <option value="4" <%= producto.IDcategoria == 4 ? 'selected' : '' %>>Películas</option>
+                                <option value="5" <%= producto.IDcategoria == 5 ? 'selected' : '' %>>Ropa</option>
+                                <option value="6" <%= producto.IDcategoria == 6 ? 'selected' : '' %>>Tecnología</option>
+
                             </select>
                         </div>
                     </div>
@@ -57,7 +60,8 @@
                             </div>
                             <br>
                             <div class="izquierda">
-                            <input class="input is-primary" type="number" step="0.01" min="0" name="precioProducto" id="precioProducto" placeholder="Precio" required>
+                            <input class="input is-primary" type="number" step="0.01" min="0" name="precioProducto" id="precioProducto" 
+                            placeholder="Precio" required value="<%= producto.precio.toFixed(2) %>">
                             </div>
                         </div>
                     </div>

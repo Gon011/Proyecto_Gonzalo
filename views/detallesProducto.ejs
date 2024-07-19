@@ -31,7 +31,9 @@
         
         <% if (permisos.some(p => p.funcionalidad === 'modifica productos')) { %>
         <div class="boton-izquierda">
-            <i class="tam color-purple fas fa-edit fa-lg"></i>
+            <a href="/productos/editar/<%= producto.IDproducto %>">
+                <i class="tam color-purple fas fa-edit fa-lg"></i>
+            </a>
         </div>
         <% } %>
         

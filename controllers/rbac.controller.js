@@ -112,6 +112,6 @@ exports.post_inicia = (request, response, next) => {
 
 exports.get_cierra = (request, response, next) => {
     request.session.destroy(() => {
-        response.redirect('..')
+        response.redirect('/')
     })
 };
