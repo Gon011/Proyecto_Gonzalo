@@ -45,4 +45,8 @@ module.exports = class Producto {
         );
     }
 
+    static deleteById(id) {
+        return db.execute(`DELETE FROM productos WHERE IDproducto = ?;`, [id]);
+    }
+
 }

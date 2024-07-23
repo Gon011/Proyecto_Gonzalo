@@ -49,6 +49,13 @@ module.exports = class Compra {
     );
     }
 
+    static findByProductoId(productId) {
+      return db.execute(
+          `SELECT * FROM comproducto WHERE IDproducto = ?`,
+          [productId]
+      );
+    }
+
     // Método para agregar productos a una compra
     static addProductsToCompra(idCompra, productos) {
     const queries = productos.map(producto => {

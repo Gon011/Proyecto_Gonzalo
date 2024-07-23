@@ -22,10 +22,13 @@
             <p class="subtitle is-3">Categoria: <%= producto.tipo %></p>
         </div>
     </div>
+
+    <div id="errorContainer" class="notification is-danger" style="display: none;"></div>
+
     <div class="detallesProducto botones">
         <% if (permisos.some(p => p.funcionalidad === 'elimina productos')) { %>
         <div class="boton-izquierda">
-            <i class="tam color-red fas fa-trash fa-lg"></i>
+            <a><i class="tam color-red fas fa-trash fa-lg" id="eliminarProducto"></i></a>
         </div>
         <% } %>
         
@@ -50,5 +53,54 @@
         </div>
     </div>
 </section>
+
+<div id="confirmDialog" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeDialog">&times;</span>
+      <p>¿Estás seguro de que deseas eliminar este producto?</p>
+      <p>Esta acción no se puede deshacer</p>
+      <p id="mensaje"></p>
+      <button id="confirmDelete" class="button is-danger">Eliminar</button>
+      <button id="cancelDelete" class="button">Cancelar</button>
+    </div>
+</div>
+
+<script>
+    document.getElementById('eliminarProducto').addEventListener('click', () => {
+        document.getElementById('confirmDialog').style.display = 'block';
+    });
+
+    document.getElementById('closeDialog').addEventListener('click', () => {
+        document.getElementById('confirmDialog').style.display = 'none';
+    });
+
+    document.getElementById('cancelDelete').addEventListener('click', () => {
+        document.getElementById('confirmDialog').style.display = 'none';
+    });
+
+    document.getElementById('confirmDelete').addEventListener('click', () => {
+        fetch('/productos/eliminar/<%= producto.IDproducto %>', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(result => {
+            if (result.ok) {
+                return result.json();
+            } else {
+                return result.json().then(data => { throw new Error(data.message); });
+            }
+        }).then(data => {
+            alert(data.message);
+            window.location.href = '/productos';
+        }).catch(err => {
+            console.log(err);
+            // Mostrar el mensaje de error
+            document.getElementById('errorContainer').innerText = err.message;
+            document.getElementById('errorContainer').style.display = 'block';
+            document.getElementById('confirmDialog').style.display = 'none';
+        });
+    });
+</script>
 
 <%- include('includes/foot.ejs') %>

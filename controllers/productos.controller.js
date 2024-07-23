@@ -1,4 +1,5 @@
 const Producto = require("../models/producto.model");
+const Compra = require("../models/compra.model");
 
 exports.get_productos = (request, response, next) => {
     let compraducto;
@@ -142,4 +143,26 @@ exports.post_editar_producto = (request, response, next) => {
             response.redirect(`/productos/${id}`);
         })
         .catch((error) => { console.log(error); });
+};
+
+exports.post_eliminar_producto = (request, response, next) => {
+    const id = request.params.id;
+        // Verificar si el producto está referenciado en comproducto
+        Compra.findByProductoId(id)
+            .then(([rows, fieldData]) => {
+                if (rows.length > 0) {
+                    // Si hay referencias, no eliminar el producto
+                    response.status(400).json({ message: 'No se puede eliminar el producto porque está referenciado en compras' });
+                } else {
+                    // Si no hay referencias, eliminar el producto
+                    Producto.deleteById(id)
+                        .then(() => {
+                            response.status(200).json({ message: 'Producto eliminado exitosamente' });
+                        });
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                response.status(500).json({ message: 'Error eliminando el producto' });
+            });
 };

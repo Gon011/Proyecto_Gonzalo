@@ -16,4 +16,6 @@ router.post("/:id", isAuth, permisos.realizar_compra, controladores.post_carrito
 router.get("/editar/:id", isAuth, permisos.editar_producto, controladores.get_editar_producto);
 router.post("/editar/:id", isAuth, permisos.editar_producto, controladores.post_editar_producto);
 
+router.post("/eliminar/:id", isAuth, permisos.eliminar_producto ,controladores.post_eliminar_producto);
+
 module.exports = router;
