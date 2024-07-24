@@ -34,6 +34,14 @@ exports.get_carrito = (request, response, next) => {
 }
 
 exports.get_graficos = (request, response, next) => {
+    let compraducto;
+
+    if (request._parsedOriginalUrl.path.startsWith("/productos")) {
+        compraducto = false;
+    }
+    if (request._parsedOriginalUrl.path.startsWith("/compras")) {
+        compraducto = true;
+    }
     Promise.all([
         Compra.fetchIngresosPorDia(),
         Compra.fetchVentasPorCategoria(),
@@ -55,7 +63,8 @@ exports.get_graficos = (request, response, next) => {
             ventasPorDia: ventasPorDia,
             comprasPorEstado: comprasPorEstado,
             ventasPorProducto: ventasPorProducto,
-            permisos: request.session.permisos || []
+            permisos: request.session.permisos || [],
+            compraducto: compraducto
         });
     })
     .catch((error) => {
